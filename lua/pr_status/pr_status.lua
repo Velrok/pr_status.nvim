@@ -78,6 +78,7 @@ function M.start()
   if M.timer then return end
 
   M.timer = vim.loop.new_timer()
+  vim.notify('running regular PR checks via ' .. config.options.gh_command)
   M.timer:start(
     config.options.timer.initial_delay_ms,
     config.options.timer.regular_poll_delay_ms,
@@ -90,6 +91,11 @@ function M.restart()
   M.start()
 end
 
+function M.stop()
+  vim.notify('stopped regular PR checks ')
+  if M.timer then M.timer:close() end
+end
+
 function M.get_last_result()
   return last_result
 end
@@ -99,7 +105,7 @@ function M.get_last_result_string()
   -- local pr_check_failed_test = require("plugins/pr_status").latest_check_test
 
   local pr_status_icons = config.options.icons
-  local pr_status = pr_status_icons.gh_icon
+  local pr_status = '' .. pr_status_icons.gh_icon
 
   if pr_check_result and pr_check_result.summary then
     if pr_check_result.summary.pending > 0 then
@@ -125,10 +131,6 @@ function M.get_last_result_string()
   end
 
   return pr_status
-end
-
-function M.stop()
-  if M.timer then M.timer:close() end
 end
 
 return M
