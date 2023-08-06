@@ -2,7 +2,7 @@ local config = require("pr_status.config")
 
 local M = {}
 
-local last_result = {}
+M.last_result = {}
 
 local function run_pr_check()
   vim.notify(
@@ -63,7 +63,7 @@ local function run_pr_check()
           end
         end
 
-        last_result = {
+        M.last_result = {
           details = results,
           summary = { passed = passed, failed = failed, pending = pending },
           failures = failures,
@@ -97,7 +97,7 @@ function M.stop()
 end
 
 function M.get_last_result()
-  return last_result
+  return M.last_result
 end
 
 function M.get_last_result_string()
