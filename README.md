@@ -15,6 +15,21 @@ Install the plugin with your preferred package manager:
 
 ```lua
 -- lazy.nvim
+{
+  'Velrok/pr_status.nvim',
+  config = function()
+    require("pr_status").setup(
+      { auto_start = true } -- if you want it to just start
+    )
+  end
+},
+```
+
+## 🧰 Usage
+
+```lua
+-- somewhere in your status bar
+require("pr_status").get_last_result_string() or "pr_status failed"
 ```
 
 ## ⚙️ Configuration
