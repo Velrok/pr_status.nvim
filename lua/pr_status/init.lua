@@ -13,11 +13,11 @@ function M.restart()
 end
 
 function M.get_last_result_string()
-  require("pr_status.pr_status").get_last_result_string()
+  return require("pr_status.pr_status").get_last_result_string()
 end
 
 function M.get_last_result()
-  require("pr_status.pr_status").get_last_result()
+  return require("pr_status.pr_status").get_last_result()
 end
 
 return M
