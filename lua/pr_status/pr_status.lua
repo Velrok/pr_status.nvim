@@ -40,6 +40,11 @@ local function run_pr_check()
                   'parsed data must return a status of pass, fail or pending but got:' .. data.status
                 )
               end
+            elseif data and data.status == nil then
+              table.insert(
+                validation_errors,
+                'parsed data must return a status got nil'
+              )
             end
 
 
