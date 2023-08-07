@@ -8,6 +8,7 @@ local function github_cli_parser(line)
   local status = data[2] -- one off: pass, fail, pending
 
   return {
+    line = line,
     check = check,
     status = status
   }
