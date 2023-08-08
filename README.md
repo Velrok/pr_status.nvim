@@ -51,7 +51,7 @@ require("pr_status").get_last_result_string() or "pr_status failed"
     join_string = ', ',
     separator = ' ',
   },
-  gh_command = "gh pr status",
+  gh_command = "gh pr checks",
   status_line_parser = github_cli_parser,
   auto_start = false, -- or function which returns true|false
   timer = {
