@@ -16,7 +16,7 @@ end
 
 M.defaults = {
   icons = {
-    gh_icon = " ",
+    gh_icon = " ",
     unknown = '?',
     running = ' ',
     failed = ' ',
