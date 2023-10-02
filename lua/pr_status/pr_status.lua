@@ -34,7 +34,7 @@ local function run_pr_check()
             end
 
             if data and data.status then
-              if data.status ~= 'pass' and data.status ~= 'fail' and data.status ~= 'pending' then
+              if data.status ~= 'pass' and data.status ~= 'fail' and data.status ~= 'pending' and data.status ~= 'skipping' then
                 table.insert(
                   validation_errors,
                   'parsed data must return a status of pass, fail or pending but got:' .. data.status
@@ -56,7 +56,7 @@ local function run_pr_check()
             else
               table.insert(results, data)
 
-              if data and data.status == 'pass' then
+              if data and (data.status == 'pass' or data.status == 'skipping') then
                 passed = passed + 1
               elseif data and data.status == 'fail' then
                 failed = failed + 1

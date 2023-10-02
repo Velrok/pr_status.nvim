@@ -5,7 +5,7 @@ local function github_cli_parser(line)
   local data = utils.split_string(line, "\t")
 
   local check = data[1]  -- any string
-  local status = data[2] -- one off: pass, fail, pending
+  local status = data[2] -- one off: pass, fail, pending, skipping
 
   return {
     line = line,
